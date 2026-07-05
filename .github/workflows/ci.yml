@@ -48,6 +48,5 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Generate code coverage
-        run: |
-          cargo tarpaulin --verbose --workspace
+      - name: Generate coverage
+        run: cargo tarpaulin --out Html --output-dir ./coverage
