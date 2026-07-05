@@ -2,5 +2,8 @@
 name = "financial_monitor"
 version = "0.1.0"
 edition = "2024"
+authors = ["NikitkaNos"]
+description = "TODO"
+
 
 [dependencies]
