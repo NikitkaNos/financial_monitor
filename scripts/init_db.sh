@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -x
 set -eo pipefail
+docker rm -f financial_monitor_db 2>/dev/null || true
 
 if ! [ -x "$(command -v psql)" ]; then
 echo >&2 "Error: psql is not installed."
@@ -24,6 +25,7 @@ DB_NAME="${POSTGRES_DB:=financial_monitor}"
 DB_PORT="${POSTGRES_PORT:=5432}"
 # Launch postgres using Docker
 docker run \
+--name financial_monitor_db \
 -e POSTGRES_USER=${DB_USER} \
 -e POSTGRES_PASSWORD=${DB_PASSWORD} \
 -e POSTGRES_DB=${DB_NAME} \
@@ -41,5 +43,6 @@ done
 >&2 echo "Postgres is up and running on port ${DB_PORT}!"
 
 
-export DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@localhost:${DB_PORT}/${DB_NAME}
-sqlx database create
+export DATABASE_URL=postgres://postgres:password@127.0.0.1:5432/financial_monitor
+echo "export DATABASE_URL=${DATABASE_URL}
+sqlx migrate add create_transactions_table
