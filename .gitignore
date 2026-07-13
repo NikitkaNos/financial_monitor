@@ -24,3 +24,19 @@ target
 # Added by cargo
 
 /target
+# Rust
+/target/
+/Cargo.lock
+
+# IDE
+.vscode/
+*.code-workspace
+
+# Env
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db

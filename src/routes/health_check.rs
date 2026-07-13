@@ -35,10 +35,9 @@ async fn transaction_returns_a_200_for_valid_form_data() {
     let configuration = get_configuration().expect("Failed to read configuration");
     let connection_string = configuration.database.connection_string();
 
-    let _connection = PgConnection::connect(&connection_string)
+    let mut connection = PgConnection::connect(&connection_string)
         .await
         .expect("Failed to connect Postgres");
-
     let client = reqwest::Client::new();
 
     //Act
@@ -53,6 +52,10 @@ async fn transaction_returns_a_200_for_valid_form_data() {
 
     //Asseert
     assert_eq!(200, response.status().as_u16());
+    let saved = sqlx::query!("SELECT id uuid, amount FROM transactions")
+        .fetch_one(&mut connection)
+        .await
+        .expect("Failed to fetch saved transaction.");
 }
 #[tokio::test]
 async fn transaction_returns_a_400_when_data_is_missing() -> color_eyre::eyre::Result<()> {
