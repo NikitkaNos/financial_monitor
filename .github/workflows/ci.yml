@@ -75,7 +75,9 @@ jobs:
         run: cargo install sqlx-cli --features postgres --no-default-features --locked
 
       - name: Run migrations
-        run: SKIP_DOCKER=true ./scripts/init_db.sh
+        run: |
+          chmod +x scripts/init_db.sh
+          SKIP_DOCKER=true ./scripts/init_db.sh
 
       # Готовим кеш запросов sqlx для автономного режима
       - name: Prepare sqlx cache
