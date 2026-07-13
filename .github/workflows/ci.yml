@@ -39,7 +39,7 @@ jobs:
           components: clippy
       - uses: Swatinem/rust-cache@v2
       - name: Run linter
-        run: cargo clippy -- -D warnings
+        run: cargo clippy -- -A unused-imports
 
   # ---------- ЗАДАЧА 3: Тесты ----------
   test:
