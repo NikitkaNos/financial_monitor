@@ -32,7 +32,7 @@ async fn health_check_works() {
 async fn transaction_returns_a_200_for_valid_form_data() {
     // Arrange
     let app_address = spawn_app();
-    let configuration = get_configuration().expect("Failed to read configuration");
+    let configuration = get_configuration().expect("Failed to read configuration_ofc");
     let connection_string = configuration.database.connection_string();
 
     let mut connection = PgConnection::connect(&connection_string)
