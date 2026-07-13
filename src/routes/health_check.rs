@@ -1,5 +1,7 @@
+use crate::configuration::get_configuration;
 use crate::run;
 use actix_web::HttpResponse;
+use sqlx::{Connection, PgConnection};
 use std::net::TcpListener;
 
 #[allow(dead_code)] //This code using only in tests
