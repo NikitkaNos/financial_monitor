@@ -1,10 +1,10 @@
-use color_eyre::eyre::Result;
+use crate::run;
 use std::net::TcpListener;
-
+#[allow(dead_code)] //This code using only in tests
 fn spawn_app() -> String {
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
-    let server = financial_monitor::run(listener).expect("Failed to bind adress");
+    let server = run(listener).expect("Failed to bind adress");
 
     let _ = tokio::spawn(server);
     format!("http://127.0.0.1.:{}", port)
@@ -44,7 +44,7 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
     assert_eq!(200, response.status().as_u16());
 }
 #[tokio::test]
-async fn subscribe_returns_a_400_when_data_is_missing() -> Result<()> {
+async fn subscribe_returns_a_400_when_data_is_missing() -> color_eyre::eyre::Result<()> {
     color_eyre::install()?;
     //Arrange
     let app_address = spawn_app();
