@@ -50,7 +50,7 @@ async fn transaction_returns_a_200_for_valid_form_data() {
         .await
         .expect("Failed to expect request.");
 
-    //Asseert
+    //Asseert2
     assert_eq!(200, response.status().as_u16());
     let saved = sqlx::query!("SELECT id uuid, amount FROM transactions")
         .fetch_one(&mut connection)
