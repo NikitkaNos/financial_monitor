@@ -16,6 +16,17 @@ name = "financial_monitor"
 actix-web = "4.14.0"
 tokio = { version = "1.52.3", features = ["macros", "rt-multi-thread"] }
 serde = { version = "1", features = ["derive"] }
+[dependencies.sqlx]
+version = "0.8.6"
+default-features = false
+features = [
+    "runtime-tokio-rustls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+    "migrate",
+]
 
 [dev-dependencies]
 reqwest = "0.13.4"

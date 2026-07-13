@@ -44,5 +44,10 @@ done
 
 
 export DATABASE_URL=postgres://postgres:password@127.0.0.1:5432/financial_monitor
-echo "export DATABASE_URL=${DATABASE_URL}
-sqlx migrate add create_transactions_table
+#echo export DATABASE_URL=${DATABASE_URL}
+#sqlx migrate add create_transactions_table
+# sqlx migrate run
+sqlx database create
+sqlx migrate run
+
+>&2 echo "Postgres has been migrated, ready to go!"
