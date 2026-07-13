@@ -2,10 +2,11 @@
 use crate::configuration::get_configuration;
 use crate::run;
 use actix_web::HttpResponse;
-use sqlx::{Connection, PgConnection, PgPool};
+use sqlx::PgPool;
+//use sqlx::{Connection, PgConnection, PgPool};
 use std::net::TcpListener;
 
-async fn spawn_app() -> String {
+async fn _spawn_app() -> String {
     let configuration = get_configuration().expect("Failed to read configuration");
     let connection_string = configuration.database.connection_string();
     let pool = PgPool::connect(&connection_string)
@@ -19,7 +20,7 @@ async fn spawn_app() -> String {
 }
 #[tokio::test]
 async fn health_check_works() {
-    let address = spawn_app().await;
+    let address = _spawn_app().await;
     let client = reqwest::Client::new();
 
     let response = client
@@ -33,7 +34,7 @@ async fn health_check_works() {
 }
 #[tokio::test]
 async fn transaction_returns_a_200_for_valid_form_data() {
-    let app_address = spawn_app().await;
+    let app_address = _spawn_app().await;
     let client = reqwest::Client::new();
 
     let body = "amount=100&category=Food&type=expense";
@@ -84,7 +85,7 @@ async fn transaction_returns_a_200_for_valid_form_data() {
 async fn transaction_returns_a_400_when_data_is_missing() -> color_eyre::eyre::Result<()> {
     color_eyre::install()?;
     //Arrange
-    let app_address = spawn_app().await;
+    let app_address = _spawn_app().await;
     let client = reqwest::Client::new();
     let test_cases = vec![
         ("name=le%20guin", "Missing the email"),
