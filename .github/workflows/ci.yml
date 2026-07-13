@@ -77,7 +77,6 @@ jobs:
       - name: Run migrations
         run: |
           chmod +x scripts/init_db.sh
-          export SKIP_DOCKER=true
           SKIP_DOCKER=true ./scripts/init_db.sh
 
       # Готовим кеш запросов sqlx для автономного режима
