@@ -874,6 +874,7 @@ dependencies = [
  "chrono",
  "color-eyre",
  "config",
+ "dotenvy",
  "reqwest",
  "serde",
  "sqlx",

@@ -20,6 +20,7 @@ color-eyre = "0.6"
 config = "0.15.25"
 chrono = "0.4.45"
 uuid = { version = "1", features = ["v4", "serde"] }
+dotenvy = "0.15"
 
 [dependencies.sqlx]
 version = "0.8.6"
