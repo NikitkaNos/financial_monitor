@@ -1,3 +1,4 @@
+use env_logger::Env;
 use financial_monitor::configuration::get_configuration;
 use financial_monitor::run;
 use sqlx::PgPool;
@@ -5,6 +6,7 @@ use std::net::TcpListener;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
+    env_logger::Builder::from_env(Env::default().default_filter_or("info")).init();
     dotenvy::dotenv().ok();
     let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL не найден");
     println!("Database URL: {}", database_url);

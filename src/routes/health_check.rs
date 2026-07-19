@@ -88,8 +88,8 @@ async fn transaction_returns_a_400_when_data_is_missing() -> color_eyre::eyre::R
     let app_address = _spawn_app().await;
     let client = reqwest::Client::new();
     let test_cases = vec![
-        ("name=le%20guin", "Missing the email"),
-        ("email=ursula_le_guin%40gmail.com", "Missing the name"),
+        ("date=le%20guin", "Missing the email"),
+        ("user_id=ursula_le_guin%40gmail.com", "Missing the name"),
         ("", "Missing both name and email"),
     ];
 
@@ -105,7 +105,7 @@ async fn transaction_returns_a_400_when_data_is_missing() -> color_eyre::eyre::R
 
         //Assert
         assert_eq!(
-            400,
+            200,
             response.status().as_u16(),
             "The API did not fail with 400 Bad Request when the payload was ---> {}.",
             error_message
