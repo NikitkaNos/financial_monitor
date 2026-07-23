@@ -32,6 +32,7 @@ pub async fn transaction(
     //         HttpResponse::InternalServerError().finish()
     //     }
     // }
+    log::info!("Before response of transaction TEST");
     HttpResponse::Ok().finish() //Возвращаем 200 ВСЕГДА, даже не смотрим на данные
 }
 //

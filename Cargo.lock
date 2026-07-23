@@ -992,6 +992,7 @@ dependencies = [
  "config",
  "dotenvy",
  "env_logger",
+ "log",
  "reqwest",
  "serde",
  "sqlx",
