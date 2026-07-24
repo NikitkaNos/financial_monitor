@@ -102,7 +102,7 @@ async fn transaction_returns_a_400_when_data_is_missing() -> color_eyre::eyre::R
             .send()
             .await
             .expect("Failed to execute request.");
-
+        log::info!("LOG_transaction_returns_a_400");
         //Assert
         assert_eq!(
             200,
