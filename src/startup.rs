@@ -1,4 +1,4 @@
-use crate::routes::{health_check, transaction};
+use crate::routes::{health_check, signup, transaction};
 use std::net::TcpListener;
 
 use actix_web::{App, HttpServer, dev::Server, middleware::Logger, web};
@@ -11,6 +11,7 @@ pub async fn run(listener: TcpListener, pool: PgPool) -> Result<Server, std::io:
             .app_data(web::Data::new(pool.clone()))
             .route("/health_check", web::get().to(health_check))
             .route("/transactions", web::post().to(transaction))
+            .route("signup", web::post().to(signup))
     })
     .listen(listener)?
     .run();
