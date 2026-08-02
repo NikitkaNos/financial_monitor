@@ -48,7 +48,7 @@ CREATE TABLE transaction_entries (
     signed_amount DECIMAL(15,2) NOT NULL
 );
 
--- Индексы для производительности
+-- Индексы для производительности PSQL
 CREATE INDEX accounts_user_id_idx ON accounts(user_id);
 CREATE INDEX categories_user_id_parent_id_idx ON categories(user_id, parent_id);
 CREATE INDEX transactions_user_id_date_idx ON transactions(user_id, date);
