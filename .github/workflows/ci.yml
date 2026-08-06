@@ -14,7 +14,7 @@ env:
   SKIP_DOCKER: true
 
 jobs:
-  # ---------- ЗАДАЧА 1: Форматирование ----------
+  # ---------- ЗАДАЧА 1: Форматирование -----------
   fmt:
     name: Formatting
     runs-on: ubuntu-latest
