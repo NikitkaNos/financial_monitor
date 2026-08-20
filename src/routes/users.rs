@@ -22,11 +22,11 @@ pub async fn signup(form: web::Json<SingupData>, pool: web::Data<PgPool>) -> Htt
     );
     let _request_span_guard = request_span.enter();
 
-    tracing::info!("[ADDING A NEW USER - START]-->");
+    tracing::info!("[ADDING A NEW USER - START]--->");
 
     // Для запроса используем отдельный Span без enter()
     let query_span = tracing::info_span!(
-        "SAVING NEW USER DETAILS IN THE DATABASE-->",
+        "SAVING NEW USER DETAILS IN THE DATABASE--->",
         user_id = %user_id,
         user_email = %user_email,
         user_password = %user_password,
