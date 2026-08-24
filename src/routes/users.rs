@@ -15,7 +15,7 @@ pub async fn signup(form: web::Json<SingupData>, pool: web::Data<PgPool>) -> Htt
     let user_password = form.password.clone();
 
     let request_span = tracing::info_span!(
-        "ADDING A NEW USER-->",
+        "ADDING A NEW USER--->",
         user_id = %user_id,
         user_email = %user_email,
         user_password = %user_password,
