@@ -7,7 +7,7 @@ use tracing_subscriber::{EnvFilter, Registry, layer::SubscriberExt};
 /// Создаёт подписчика (subscriber) для логирования.
 ///
 /// # Аргументы
-/// - `name`: имя приложения (используется в Bunyan-логах).
+/// - `name`: имя приложения (используется в Bunyan-логах)...
 /// - `env_filter`: уровень логирования (например, "info", "debug", "warn").
 /// - `log_file`: опциональный файл для записи логов в JSON-формате.
 pub fn get_subscriber(
