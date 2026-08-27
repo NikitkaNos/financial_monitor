@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
+
 set -x
 set -eo pipefail
+
+# Переходим в корень проекта
+cd "$(dirname "$0")/.."
 
 # Удаляем старый контейнер, если он есть
 docker rm -f financial_monitor_db 2>/dev/null || true
