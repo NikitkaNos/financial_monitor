@@ -9,13 +9,13 @@ cd "$(dirname "$0")/.."
 # Удаляем старый контейнер, если он есть
 docker rm -f financial_monitor_db 2>/dev/null || true
 
-# Проверяем, что psql установлен
+# Проверяем, что psql установлен!
 if ! [ -x "$(command -v psql)" ]; then
   echo >&2 "Error: psql is not installed."
   exit 1
 fi
 
-# Проверяем, что sqlx установлен
+# Проверяем, что sqlx установлен!
 if ! [ -x "$(command -v sqlx)" ]; then
   echo >&2 "Error: sqlx is not installed."
   echo >&2 "Use:"
