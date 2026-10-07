@@ -37,7 +37,7 @@ pub fn get_subscriber(
     Registry::default().with(env_filter).with(layers)
 }
 
-/// Инициализирует глобального подписчика.
+/// Инициализирует глобального подписчика....:
 pub fn init_subscriber(subscriber: impl Subscriber + Sync + Send) {
     // Перенаправляем логи из `log` в `tracing`
     LogTracer::init().expect("Failed to set logger");
